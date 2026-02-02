@@ -6,23 +6,6 @@ from telegram.ext import (
     ContextTypes,
     filters,
 )
-from flask import Flask
-from threading import Thread
-
-app = Flask(__name__)
-
-@app.route('/')
-def home():
-    return "Bot is alive!"
-
-def run():
-    app.run(host='0.0.0.0', port=8080)
-
-def keep_alive():
-    t = Thread(target=run)
-    t.start()
-
-keep_alive()
 
 # ================== CONFIG ==================
 
@@ -163,4 +146,5 @@ app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_messages)
 
 print("🤖 Bot is running...")
 app.run_polling()
+
 
